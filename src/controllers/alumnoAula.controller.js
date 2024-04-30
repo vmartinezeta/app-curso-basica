@@ -34,3 +34,19 @@ export async function createAlumno(req, res) {
         return res.status(500).json({ message: error.message })
     }
 }
+
+
+export async function findAll(req, res) {
+    try {
+        const params = req.params
+        const alumnos = await AlumnoAula.findAll({
+            where: {
+                aulaId: params.aulaId
+            },
+            include: ["alumno"]
+        })
+        return res.status(200).json(alumnos)
+    } catch (error) {
+        return res.status(500).json({ message: error.message })
+    }
+}

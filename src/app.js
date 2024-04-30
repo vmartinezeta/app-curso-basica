@@ -10,6 +10,7 @@ import { alumnoAulaRouter } from "./routes/alumnoAula.routes.js";
 import { profesorRouter } from "./routes/profesor.routes.js";
 import cors from "cors"
 import { asignaturaRouter } from "./routes/asignatura.routes.js";
+import { asignacionRouter } from "./routes/asignacion.routes.js";
 
 
 export const app = express()
@@ -34,3 +35,4 @@ app.use(aulaRouter)
 app.use(alumnoAulaRouter)
 app.use(profesorRouter)
 app.use(asignaturaRouter)
+app.use(asignacionRouter)
