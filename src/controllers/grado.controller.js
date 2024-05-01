@@ -18,3 +18,35 @@ export async function findAll(req, res) {
         return res.status(500).json({message:error.message})
     }
 }
+
+
+ export async function updateGrado(req, res) {
+    try {
+        const params = req.params
+        const grado = await Grado.findOne({
+            where: {
+                id: params.gradoId
+            }
+        })
+        grado.set(req.body)
+        await grado.save()
+        return res.sendStatus(200)
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+ } 
+
+
+ export async function deleteGrado(req, res) {
+    try {
+        const params = req.params
+        await Grado.destroy({
+            where: {
+                id: params.gradoId
+            }
+        })    
+        return res.sendStatus(200)    
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+ }

@@ -50,3 +50,20 @@ export async function findAll(req, res) {
         return res.status(500).json({ message: error.message })
     }
 }
+
+
+export async function updateAlumno(req, res) {
+    try {
+        const params = req.params
+        const alumno = await Alumno.findOne({
+            where:{
+                id:params.alumnoId
+            }
+        })   
+        alumno.set(req.body)
+        await alumno.save() 
+        return res.sendStatus(200)
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}

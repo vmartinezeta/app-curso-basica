@@ -65,18 +65,17 @@ export async function toggleCurso(req, res) {
             }
         })
 
-        const promises = []
-        cursos.forEach(async curso => {
-            curso.activo = !curso.activo
-            promises.push(curso.save())
-        })
-
-        await Promise.all(promises)
+        await Promise.all(cursos.map(toggleCursoAndSave))
 
         return res.sendStatus(200)
     } catch (error) {
         return res.status(500).json({message:error.message})
     }
+}
+
+async function toggleCursoAndSave(curso) {
+    curso.activo = !curso.activo
+    return curso.save()
 }
 
 export async function findCurso(req, res) {

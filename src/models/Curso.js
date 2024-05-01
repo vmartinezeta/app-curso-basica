@@ -1,7 +1,7 @@
 import { sequelize } from "../database/database.js";
 import { DataTypes } from "sequelize";
 import { Aula } from "./Aula.js";
-
+import { Periodo } from "./Periodo.js";
 
 
 export const Curso = sequelize.define("curso", {
@@ -34,3 +34,16 @@ Aula.belongsTo(Curso, {
     foreinkey: "cursoId",
     targetId: "id" 
 });
+
+
+
+Curso.hasMany(Periodo, {
+    "foreignKey":"cursoId",
+    "sourceKey":"id"
+})
+
+
+Periodo.belongsTo(Curso, {
+    "foreignKey":"cursoId",
+    "targetKey":"id"
+})

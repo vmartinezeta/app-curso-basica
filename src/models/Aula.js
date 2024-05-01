@@ -2,7 +2,7 @@ import { sequelize } from "../database/database.js";
 import { DataTypes } from "sequelize";
 import { AlumnoAula } from "./AlumnoAula.js";
 import { Asignacion } from "./Asignacion.js";
-import { Alumno } from "./Alumno.js";
+
 
 export const Aula = sequelize.define("aula", {
     id: {
