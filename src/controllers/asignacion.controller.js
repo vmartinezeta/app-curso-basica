@@ -70,18 +70,18 @@ export async function findAllByProfesor(req, res) {
             attributes: ["id"],
             include: [
                 {
-                    association: Asignacion.associations.profesor,
+                    association: "profesor",
                     attributes: ["username"]
                 },
                 {
                     association: "aula",
                     attributes: ["id"],
-                    include: ["curso", "grado", "seccion"]
+                    include: ["curso", "grado", "seccion"]                    
                 },
                 "asignatura",
             ],
             where: {
-                "$aula.cursoId$": params.cursoId,
+                "$aula.curso.activo$":true,
                 "$profesor.username$": params.username
             }
         })

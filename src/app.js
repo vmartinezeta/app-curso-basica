@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors"
 import { cursoRouter } from "./routes/curso.routes.js";
 import {adminRouter} from "./routes/admin.routes.js"
 import { seccionRouter } from "./routes/seccion.routes.js";
@@ -8,9 +9,9 @@ import { aulaRouter } from "./routes/aula.routes.js";
 import { authRouter } from "./routes/auth.routes.js";
 import { alumnoAulaRouter } from "./routes/alumnoAula.routes.js";
 import { profesorRouter } from "./routes/profesor.routes.js";
-import cors from "cors"
 import { asignaturaRouter } from "./routes/asignatura.routes.js";
 import { asignacionRouter } from "./routes/asignacion.routes.js";
+import { periodoRouter } from "./routes/periodo.routes.js";
 
 
 export const app = express()
@@ -36,3 +37,4 @@ app.use(alumnoAulaRouter)
 app.use(profesorRouter)
 app.use(asignaturaRouter)
 app.use(asignacionRouter)
+app.use(periodoRouter)

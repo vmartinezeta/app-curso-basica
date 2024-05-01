@@ -5,4 +5,4 @@ import { createAsignacion, findAll, findAllByProfesor } from "../controllers/asi
 export const asignacionRouter = Router()
 asignacionRouter.post("/asignacion", createAsignacion)
 asignacionRouter.get("/asignacion/:aulaId", findAll)
-asignacionRouter.get("/asignacion/:username/:cursoId", findAllByProfesor)
+asignacionRouter.get("/asignaturaAula/:username", findAllByProfesor)
