@@ -9,7 +9,6 @@ export async function findAll (req, res) {
             offset:+from,
             limit:+to
         })
-        console.log(cursos)
         return res.json(cursos)
     } catch (error) {
         return res.status(500).json({message:error.message})

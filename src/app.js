@@ -12,6 +12,8 @@ import { profesorRouter } from "./routes/profesor.routes.js";
 import { asignaturaRouter } from "./routes/asignatura.routes.js";
 import { asignacionRouter } from "./routes/asignacion.routes.js";
 import { periodoRouter } from "./routes/periodo.routes.js";
+import { tipoPeriodoRouter } from "./routes/tipoPeriodo.routes.js";
+import { evaluacionRouter } from "./routes/evaluacion.routes.js";
 
 
 export const app = express()
@@ -38,3 +40,5 @@ app.use(profesorRouter)
 app.use(asignaturaRouter)
 app.use(asignacionRouter)
 app.use(periodoRouter)
+app.use(tipoPeriodoRouter)
+app.use(evaluacionRouter)
