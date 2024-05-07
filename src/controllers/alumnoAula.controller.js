@@ -67,3 +67,18 @@ export async function updateAlumno(req, res) {
         return res.status(500).json({message:error.message})
     }
 }
+
+
+export async function deleteAlumno(req, res) {
+    try {
+        const {alumnoAulaId} = req.params
+        await AlumnoAula.destroy({
+            where: {
+                id:alumnoAulaId
+            }
+        })    
+        return res.sendStatus(200)    
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}

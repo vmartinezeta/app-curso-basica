@@ -49,3 +49,36 @@ export async function findAll(req, res) {
         return res.status(500).json({ message: error.message })
     }
 }
+
+
+export async function updateAula(req, res) {
+    try {
+        const {aulaId} = req.params
+        
+        const aula = await Aula.findOne({
+            where: {
+                id:aulaId
+            }
+        })        
+        aula.set(req.body)
+        await aula.save()
+        return res.sendStatus(200)
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}
+
+
+export async function deleteAula(req, res) {
+    try {
+        const {aulaId} = req.params
+        await Aula.destroy({
+            where: {
+                id:aulaId
+            }
+        })    
+        return res.sendStatus(200)    
+    } catch (error) {
+        return res.status(500).json({message:error.message})
+    }
+}

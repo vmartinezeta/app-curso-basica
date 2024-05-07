@@ -6,26 +6,26 @@ import { Evaluacion } from "./Evaluacion.js";
 
 export const Periodo = sequelize.define("periodo", {
     id: {
-        type:DataTypes.BIGINT,
-        primaryKey:true,
-        autoIncrement:true
+        type: DataTypes.BIGINT,
+        primaryKey: true,
+        autoIncrement: true
     },
     activo: {
-        type:DataTypes.BOOLEAN,
-        defaultValue:false
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, {
-    timestamps:false
+    timestamps: false
 })
 
 
 Periodo.hasMany(Evaluacion, {
-    "foreignKey":"periodoId",
-    "sourceKey":"id"
+    "foreignKey": "periodoId",
+    "sourceKey": "id"
 })
 
 
 Evaluacion.belongsTo(Periodo, {
-    "foreignKey":"periodoId",
-    "targetKey":"id"
+    "foreignKey": "periodoId",
+    "targetKey": "id"
 })
