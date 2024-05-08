@@ -54,12 +54,19 @@ export async function findAll(req, res) {
 export async function updateAula(req, res) {
     try {
         const {aulaId} = req.params
-        
+        const { cursoId, gradoId, seccionId } = req.body
+        const existAula = await existeAula(cursoId, gradoId, seccionId)
+
+        if (existAula) {
+            return res.status(400).json({ message: "Ya existe el registro" })
+        }
+
         const aula = await Aula.findOne({
             where: {
                 id:aulaId
             }
-        })        
+        })
+        console.log(aulaId)
         aula.set(req.body)
         await aula.save()
         return res.sendStatus(200)

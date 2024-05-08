@@ -1,8 +1,18 @@
+import { Admin } from "../models/Admin.js"
 import { Profesor } from "../models/Profesor.js"
 import bcrypt from "bcryptjs"
 
 export async function createProfesor(req, res) {
     try {
+        const user = await Admin.findOne({
+            where: {
+                username:req.body.username
+            }
+        })
+
+        if (user) {
+            return res.status(500).json({ message: "Usuario ya está en uso" })
+        }
         const passwordHash = await bcrypt.hash(req.body.password, 10)
         await Profesor.create({ ...req.body, password: passwordHash })
         return res.sendStatus(200)
